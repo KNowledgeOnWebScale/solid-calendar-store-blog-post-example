@@ -1,0 +1,16 @@
+{
+  "name": "solid-calendar-blog-post-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Pieter Heyvaert (https://pieterheyvaert.com)",
+  "license": "MIT",
+  "dependencies": {
+    "@solid/community-server": "0.9.0",
+    "solid-calendar-store": "^0.0.5"
+  }
+}
