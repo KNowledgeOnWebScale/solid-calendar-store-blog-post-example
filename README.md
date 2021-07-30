@@ -8,5 +8,5 @@ Install dependencies via `npm i`.
 1. Start Community Solid Server via 
 
 ```shell
-node node_modules/@solid/community-server/bin/server.js -c config.json -m .
+npm start
 ```
