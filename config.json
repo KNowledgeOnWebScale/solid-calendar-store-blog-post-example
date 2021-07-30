@@ -6,17 +6,16 @@
     {
       "solid-calendar-store": "urn:solid-calendar-store:default:",
       "solid-server": "urn:solid-server:default:",
-      "solid-rml-store": "urn:solid-rml-store:default:"
+      "solid-rml-store": "urn:solid-rml-store:default:",
+      "my-calendar": "urn:my-calendar:default:"
     }
   ],
-  "import": [ "imports.json", "routes.json" ],
+  "import": [
+    "imports.json",
+    "routes.json",
+    "converters.json"
+  ],
   "@graph": [
-    {
-      "comment": "A more complex example with 3 different stores being routed to.",
-      "@id": "urn:solid-server:default:ResourceStore_Backend",
-      "@type": "RoutingResourceStore",
-      "rule": { "@id": "solid-server:RouterRule" }
-    },
     {
       "@id": "solid-server:MemoryResourceStore",
       "@type": "DataAccessorBasedStore",
@@ -25,124 +24,53 @@
       "accessor": { "@id": "solid-server:MemoryDataAccessor" }
     },
     {
-      "@id": "solid-calendar-store:TransformationStore",
-      "@type": "TransformationStore",
-      "TransformationStore:_source": {
-        "@id": "solid-calendar-store:CalendarStore"
-      },
-      "TransformationStore:_options_settingsPaths": ["examples/busy.yaml"]
-    },
-    {
-      "@id": "solid-calendar-store:RDFStore",
-      "@type": "RDFStore"
-    },
-    {
-      "@id": "solid-rml-store:AnyToRdfConverter",
-      "AnyToRdfConverter:_rmlRulesPath": "events.rml.ttl",
-      "AnyToRdfConverter:_rmlmapperPath": "./rmlmapper.jar"
-    },
-    {
-      "@id": "solid-calendar-store:IcsToJsonConverter",
-      "@type": "IcsToJsonConverter"
-    },
-    {
-      "@id": "solid-calendar-store:JsonToIcsConverter",
-      "@type": "JsonToIcsConverter"
-    },
-    {
-      "@id": "solid-calendar-store:HttpGetStore",
-      "@type": "HttpGetStore"
-    },
-    {
-      "@id": "solid-calendar-store:AvailabilityStore",
-      "@type": "AvailabilityStore",
-      "AvailabilityStore:_source": {
-        "@id": "solid-calendar-store:CalendarStore"
-      },
-      "AvailabilityStore:_options_baseUrl": "http://example.com/"
-    },
-    {
-      "@id": "solid-calendar-store:ExtendedBusyStore",
-      "@type": "AggregateStore",
-      "AggregateStore:_source1": { "@id": "solid-calendar-store:BusyStore" },
-      "AggregateStore:_source2": { "@id": "solid-calendar-store:HolidayStore"}
-    },
-    {
-      "@id": "solid-calendar-store:HolidayStore",
-      "@type": "HolidayStore",
-      "HolidayStore:_options_configPath": "./examples/holiday-store-settings.json"
-    },
-    {
-      "@id": "solid-calendar-store:BusyStore",
+      "@id": "my-calendar:FreeTimeExternalCalendar",
       "@type": "TransformationStore",
       "TransformationStore:_options_rules": ["busy"],
       "TransformationStore:_source": {
-        "@id": "solid-calendar-store:CalendarStore"
+        "@id": "my-calendar:FreeTimeCalendar"
       },
-      "TransformationStore:_options_settingsPaths": ["examples/busy.yaml"]
+      "TransformationStore:_options_settingsPaths": ["free-time-external.yaml"]
     },
     {
-      "@id": "solid-calendar-store:AggregateStore",
+      "@id": "my-calendar:BusyStore",
       "@type": "AggregateStore",
       "AggregateStore:_source1": {
-        "@id": "solid-calendar-store:CalendarStore"
+        "@id": "my-calendar:FreeTimeExternalCalendar"
       },
       "AggregateStore:_source2": {
-        "@id": "solid-calendar-store:CalendarStore"
+        "@id": "my-calendar:WorkCalendar"
       }
     },
     {
-      "@id": "solid-calendar-store:CalendarStore",
+      "@id": "my-calendar:FreeTimeCalendar",
       "@type": "RepresentationConvertingStore",
       "RepresentationConvertingStore:_source": {
-        "@id": "solid-calendar-store:HttpGetStore"
+        "@id": "my-calendar:FreeTimeGet"
       },
       "RepresentationConvertingStore:_options_outConverter": {
         "@id": "solid-calendar-store:RepresentationConverter"
       }
     },
     {
-      "@id": "solid-calendar-store:RdfRepresentationConverter",
-      "@type": "ChainedConverter",
-      "ChainedConverter:_converters": [
-        {
-          "@id": "solid-calendar-store:IcsToJsonConverter"
-        },
-        {
-          "@id": "solid-rml-store:AnyToRdfConverter"
-        }
-      ]
+      "@id": "my-calendar:WorkCalendar",
+      "@type": "RepresentationConvertingStore",
+      "RepresentationConvertingStore:_source": {
+        "@id": "my-calendar:WorkGet"
+      },
+      "RepresentationConvertingStore:_options_outConverter": {
+        "@id": "solid-calendar-store:RepresentationConverter"
+      }
     },
     {
-      "@id": "solid-calendar-store:RepresentationConverter",
-      "@type": "WaterfallHandler",
-      "WaterfallHandler:_handlers": [
-        {
-          "@type": "IfNeededConverter",
-          "comment": "Only continue converting if the requester cannot accept the available content type"
-        },
-        {
-          "@id": "solid-server:ContentTypeReplacer"
-        },
-        {
-          "@id": "solid-rml-store:AnyToRdfConverter"
-        },
-        {
-          "@id": "solid-calendar-store:IcsToJsonConverter"
-        },
-        {
-          "@id": "solid-calendar-store:RdfRepresentationConverter"
-        }
-      ]
-    },
-    {
-      "@id": "solid-calendar-store:HttpGetStore",
+      "@id": "my-calendar:FreeTimeGet",
+      "@type": "HttpGetStore",
       "HttpGetStore:_options_url": "https://calendar.google.com/calendar/ical/ihqfct3hddiiskgvujr3df2pe0%40group.calendar.google.com/public/basic.ics"
     },
     {
-      "@id": "solid-calendar-store:AvailabilityStore",
-      "AvailabilityStore:_options_settingsPath": "availability-store-settings.yaml",
-      "AvailabilityStore:_options_holidaySource": { "@id": "solid-calendar-store:HolidayStore" }
+      "@id": "my-calendar:WorkGet",
+      "@type": "HttpGetStore",
+      "HttpGetStore:_options_url": "https://calendar.google.com/calendar/ical/ihqfct3hddiiskgvujr3df2pe0%40group.calendar.google.com/public/basic.ics"
     }
   ]
 }

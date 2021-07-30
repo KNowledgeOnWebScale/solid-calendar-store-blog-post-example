@@ -4,10 +4,17 @@
     "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^1.0.0/components/context.jsonld",
     {
       "solid-calendar-store": "urn:solid-calendar-store:default:",
-      "solid-server": "urn:solid-server:default:"
+      "solid-server": "urn:solid-server:default:",
+      "my-calendar": "urn:my-calendar:default:"
     }
   ],
   "@graph": [
+    {
+      "comment": "A more complex example with 3 different stores being routed to.",
+      "@id": "urn:solid-server:default:ResourceStore_Backend",
+      "@type": "RoutingResourceStore",
+      "rule": { "@id": "solid-server:RouterRule" }
+    },
     {
       "comment": "A more complex example with 3 different stores being routed to.",
       "@id": "urn:solid-server:default:ResourceStore_Backend",
@@ -24,45 +31,15 @@
       },
       "storeMap": [
         {
-          "RegexRouterRule:_storeMap_key": "^/holidays/busy$",
+          "RegexRouterRule:_storeMap_key": "^/free-time-external$",
           "RegexRouterRule:_storeMap_value": {
-            "@id": "solid-calendar-store:ExtendedBusyStore"
-          }
-        },
-        {
-          "RegexRouterRule:_storeMap_key": "^/holidays(/)?$",
-          "RegexRouterRule:_storeMap_value": {
-            "@id": "solid-calendar-store:HolidayStore"
-          }
-        },
-        {
-          "RegexRouterRule:_storeMap_key": "^/calendar$",
-          "RegexRouterRule:_storeMap_value": {
-            "@id": "solid-calendar-store:CalendarStore"
-          }
-        },
-        {
-          "RegexRouterRule:_storeMap_key": "^/availability$",
-          "RegexRouterRule:_storeMap_value": {
-            "@id": "solid-calendar-store:AvailabilityStore"
+            "@id": "my-calendar:FreeTimeExternalCalendar"
           }
         },
         {
           "RegexRouterRule:_storeMap_key": "^/busy$",
           "RegexRouterRule:_storeMap_value": {
-            "@id": "solid-calendar-store:BusyStore"
-          }
-        },
-        {
-          "RegexRouterRule:_storeMap_key": "^/aggregate$",
-          "RegexRouterRule:_storeMap_value": {
-            "@id": "solid-calendar-store:AggregateStore"
-          }
-        },
-        {
-          "RegexRouterRule:_storeMap_key": "^/transformation$",
-          "RegexRouterRule:_storeMap_value": {
-            "@id": "solid-calendar-store:TransformationStore"
+            "@id": "my-calendar:BusyStore"
           }
         },
         {
