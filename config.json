@@ -17,13 +17,6 @@
   ],
   "@graph": [
     {
-      "@id": "solid-server:MemoryResourceStore",
-      "@type": "DataAccessorBasedStore",
-      "identifierStrategy": { "@id": "solid-server:IdentifierStrategy" },
-      "auxiliaryStrategy": { "@id": "solid-server:AuxiliaryStrategy" },
-      "accessor": { "@id": "solid-server:MemoryDataAccessor" }
-    },
-    {
       "@id": "my-calendar:FreeTimeExternalCalendar",
       "@type": "TransformationStore",
       "TransformationStore:_options_rules": ["busy"],
