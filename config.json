@@ -26,7 +26,7 @@
       "TransformationStore:_options_settingsPaths": ["free-time-external.yaml"]
     },
     {
-      "@id": "my-calendar:BusyStore",
+      "@id": "my-calendar:BusyCalendar",
       "@type": "AggregateStore",
       "AggregateStore:_source1": {
         "@id": "my-calendar:FreeTimeExternalCalendar"

@@ -31,15 +31,9 @@
       },
       "storeMap": [
         {
-          "RegexRouterRule:_storeMap_key": "^/free-time-external$",
-          "RegexRouterRule:_storeMap_value": {
-            "@id": "my-calendar:FreeTimeExternalCalendar"
-          }
-        },
-        {
           "RegexRouterRule:_storeMap_key": "^/busy$",
           "RegexRouterRule:_storeMap_value": {
-            "@id": "my-calendar:BusyStore"
+            "@id": "my-calendar:BusyCalendar"
           }
         },
         {
