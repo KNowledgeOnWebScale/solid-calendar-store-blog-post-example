@@ -11,9 +11,9 @@
     }
   ],
   "import": [
-    "imports.json",
-    "routes.json",
-    "converters.json"
+    "config/imports.json",
+    "config/routes.json",
+    "config/converters.json"
   ],
   "@graph": [
     {
@@ -23,7 +23,7 @@
       "TransformationStore:_source": {
         "@id": "my-calendar:FreeTimeCalendar"
       },
-      "TransformationStore:_options_settingsPaths": ["free-time-external.yaml"]
+      "TransformationStore:_options_settingsPaths": ["config/free-time-external.yaml"]
     },
     {
       "@id": "my-calendar:BusyCalendar",

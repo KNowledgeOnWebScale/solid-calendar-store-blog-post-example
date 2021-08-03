@@ -4,7 +4,7 @@
     "https://linkedsoftwaredependencies.org/bundles/npm/@rmlio/solid-rml-store/^0.0.0/components/context.jsonld"
   ],
   "import": [
-    "files-scs:config/app/app/default.json",
+    "files-scs:config/app/main/default.json",
     "files-scs:config/app/init/default.json",
 
     "files-scs:config/storage/backend/data-accessors/memory.json",
