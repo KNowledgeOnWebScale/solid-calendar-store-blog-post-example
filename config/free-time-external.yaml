@@ -1,5 +1,5 @@
 transformation:
   busy:
-    - match: '.*'
+    - match: '^.*$'
       replace: "Busy"
       removeFields: [description]

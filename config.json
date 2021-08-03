@@ -63,7 +63,7 @@
     {
       "@id": "my-calendar:WorkGet",
       "@type": "HttpGetStore",
-      "HttpGetStore:_options_url": "https://calendar.google.com/calendar/ical/ihqfct3hddiiskgvujr3df2pe0%40group.calendar.google.com/public/basic.ics"
+      "HttpGetStore:_options_url": "https://calendar.google.com/calendar/ical/nqbdufsg9kgbm71i3rm5ttkd00%40group.calendar.google.com/public/basic.ics"
     }
   ]
 }

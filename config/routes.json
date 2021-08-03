@@ -37,6 +37,12 @@
           }
         },
         {
+          "RegexRouterRule:_storeMap_key": "^/free-time-external$",
+          "RegexRouterRule:_storeMap_value": {
+            "@id": "my-calendar:FreeTimeExternalCalendar"
+          }
+        },
+        {
           "RegexRouterRule:_storeMap_key": "^/(\\.acl)?$",
           "RegexRouterRule:_storeMap_value": {
             "@id": "solid-server:MemoryResourceStore"
