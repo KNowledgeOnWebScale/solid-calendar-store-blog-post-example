@@ -13,7 +13,7 @@
   "@graph": [
     {
       "@id": "urn:solid-server:default:ChainedConverter",
-      "ChainedConverter:_converters": [{ "@id": "solid-rml-store:AnyToRdfConverter" }]
+      "ChainedConverter:_converters": [{ "@id": "solid-calendar-store:json-to-rdf-converter" }]
     }
   ]
 }
