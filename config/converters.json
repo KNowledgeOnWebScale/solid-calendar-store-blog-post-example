@@ -9,57 +9,11 @@
       "solid-rml-store": "urn:solid-rml-store:default:"
     }
   ],
+  "import": ["files-knows-scs:config/converters.json"],
   "@graph": [
     {
       "@id": "urn:solid-server:default:ChainedConverter",
       "ChainedConverter:_converters": [{ "@id": "solid-rml-store:AnyToRdfConverter" }]
-    },
-    {
-      "@id": "solid-rml-store:AnyToRdfConverter",
-      "AnyToRdfConverter:_rmlRulesPath": "events.rml.ttl",
-      "AnyToRdfConverter:_rmlmapperPath": "./rmlmapper.jar"
-    },
-    {
-      "@id": "solid-calendar-store:IcsToJsonConverter",
-      "@type": "IcsToJsonConverter"
-    },
-    {
-      "@id": "solid-calendar-store:JsonToIcsConverter",
-      "@type": "JsonToIcsConverter"
-    },
-    {
-      "@id": "solid-calendar-store:RdfRepresentationConverter",
-      "@type": "ChainedConverter",
-      "ChainedConverter:_converters": [
-        {
-          "@id": "solid-calendar-store:IcsToJsonConverter"
-        },
-        {
-          "@id": "solid-rml-store:AnyToRdfConverter"
-        }
-      ]
-    },
-    {
-      "@id": "solid-calendar-store:RepresentationConverter",
-      "@type": "WaterfallHandler",
-      "WaterfallHandler:_handlers": [
-        {
-          "@type": "IfNeededConverter",
-          "comment": "Only continue converting if the requester cannot accept the available content type"
-        },
-        {
-          "@id": "solid-server:ContentTypeReplacer"
-        },
-        {
-          "@id": "solid-rml-store:AnyToRdfConverter"
-        },
-        {
-          "@id": "solid-calendar-store:IcsToJsonConverter"
-        },
-        {
-          "@id": "solid-calendar-store:RdfRepresentationConverter"
-        }
-      ]
     }
   ]
 }
