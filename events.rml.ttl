@@ -21,7 +21,7 @@ map:om_000 a rr:ObjectMap;
 map:om_001 a rr:ObjectMap;
     rr:parentTriplesMap map:map_events_000.
 map:om_002 a rr:ObjectMap;
-    rr:constant "http://schema.org/Date";
+    rr:constant "http://schema.org/Event";
     rr:termType rr:IRI.
 map:om_003 a rr:ObjectMap;
     rml:reference "title";
