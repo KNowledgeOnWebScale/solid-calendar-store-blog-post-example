@@ -11,7 +11,7 @@
   "author": "Pieter Heyvaert (https://pieterheyvaert.com)",
   "license": "MIT",
   "dependencies": {
-    "@solid/community-server": "^1.0.0-beta.2",
-    "solid-calendar-store": "^0.0.12"
+    "@solid/community-server": "^1.0.0",
+    "solid-calendar-store": "^0.0.13"
   }
 }
