@@ -16,6 +16,8 @@ about the [Solid Calendar Store](https://github.com/KNowledgeOnWebScale/solid-ca
 npm start
 ```
 
+
+
 ## Configuration
 
 The main configuration file is `config.json`.

@@ -17,29 +17,29 @@
   ],
   "@graph": [
     {
-      "@id": "my-calendar:FreeTimeExternalCalendar",
+      "@id": "my-calendar:PersonalExternalCalendar",
       "@type": "TransformationStore",
       "TransformationStore:_options_rules": ["busy"],
       "TransformationStore:_source": {
-        "@id": "my-calendar:FreeTimeCalendar"
+        "@id": "my-calendar:PersonalCalendar"
       },
-      "TransformationStore:_options_settingsPaths": ["config/free-time-external.yaml"]
+      "TransformationStore:_options_settingsPaths": ["config/personal-external.yaml"]
     },
     {
       "@id": "my-calendar:BusyCalendar",
       "@type": "AggregateStore",
       "AggregateStore:_source1": {
-        "@id": "my-calendar:FreeTimeExternalCalendar"
+        "@id": "my-calendar:PersonalExternalCalendar"
       },
       "AggregateStore:_source2": {
         "@id": "my-calendar:WorkCalendar"
       }
     },
     {
-      "@id": "my-calendar:FreeTimeCalendar",
+      "@id": "my-calendar:PersonalCalendar",
       "@type": "RepresentationConvertingStore",
       "RepresentationConvertingStore:_source": {
-        "@id": "my-calendar:FreeTimeGet"
+        "@id": "my-calendar:PersonalGet"
       },
       "RepresentationConvertingStore:_options_outConverter": {
         "@id": "solid-calendar-store:RepresentationConverter"
@@ -56,7 +56,7 @@
       }
     },
     {
-      "@id": "my-calendar:FreeTimeGet",
+      "@id": "my-calendar:PersonalGet",
       "@type": "HttpGetStore",
       "HttpGetStore:_options_url": "https://calendar.google.com/calendar/ical/ihqfct3hddiiskgvujr3df2pe0%40group.calendar.google.com/public/basic.ics"
     },
