@@ -6,7 +6,8 @@ about the [Solid Calendar Store](https://github.com/KNowledgeOnWebScale/solid-ca
 ## Requirements
 
 - Install dependencies via `npm i`.
-- Download the latest RMLMapper jar from [here](https://github.com/RMLio/rmlmapper-java/releases).
+- Download the latest RMLMapper jar from [here](https://github.com/RMLio/rmlmapper-java/releases) and
+put it in the root of this repo.
 
 ## Usage
 
@@ -25,13 +26,13 @@ curl http://localhost:3000/busy
 3. Request the busy calendar in RDF (Turtle) via
 
 ```shell
-curl -H 'accept: text/turtle' http://localhost:3000/busy
+curl -H "accept: text/turtle" http://localhost:3000/busy
 ```
 
 4. Request the busy calendar in ICS via
 
 ```shell
-curl -H 'accept: text/calendar' http://localhost:3000/busy
+curl -H "accept: text/calendar" http://localhost:3000/busy
 ```
 
 ## Configuration
