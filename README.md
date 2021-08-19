@@ -42,5 +42,5 @@ In the folder `config` we defined other configuration files, which contain,
 for example, the converters and the routes used by the [Community Solid Server](https://github.com/solid/community-server).
 
 ## License
-This code is copyrighted ©2019–2020 by [Ghent University – imec](http://idlab.ugent.be/)
+This code is copyrighted ©2021 by [Ghent University – imec](http://idlab.ugent.be/)
 and released under the [MIT license](http://opensource.org/licenses/MIT).
