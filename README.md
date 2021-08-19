@@ -16,19 +16,19 @@ about the [Solid Calendar Store](https://github.com/KNowledgeOnWebScale/solid-ca
 npm start
 ```
 
-2. Request the busy calendar in JSON (default).
+2. Request the busy calendar in JSON (default) via
 
 ```shell
 curl http://localhost:3000/busy
 ```
 
-3. Request the busy calendar in RDF (Turtle).
+3. Request the busy calendar in RDF (Turtle) via
 
 ```shell
 curl -H 'accept: text/turtle' http://localhost:3000/busy
 ```
 
-4. Request the busy calendar in ICS.
+4. Request the busy calendar in ICS via
 
 ```shell
 curl -H 'accept: text/calendar' http://localhost:3000/busy
